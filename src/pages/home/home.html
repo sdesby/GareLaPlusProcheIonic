@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gare La Plus Proche
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <p>Trouvez la gare la plus proche</p>
+    <form [formGroup]="addressForm" (ngSubmit)="sendAddress()">
+      <ion-item>
+        <ion-label floating>Entrez une adresse</ion-label>
+        <ion-input type="text" formControlName="addressInputText"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!addressForm.valid">Rechercher</button>
+    </form>
+</ion-content>
