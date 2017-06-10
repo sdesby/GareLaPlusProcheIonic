@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
@@ -24,3 +25,7 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+=======
+# GareLaPlusProcheIonic
+Ionic client for Gare La Plus Proche API
+>>>>>>> 8d952f748a94db6d7ce91a74a3e4250c977520a1
