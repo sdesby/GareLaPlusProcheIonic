@@ -10,18 +10,24 @@ import {NearestStationProvider} from "../../providers/nearest-station/nearest-st
 })
 export class HomePage {
     private addressForm: FormGroup;
+    private nstation: any;
+    private result: any;
 
   constructor(public nearestStationProvider: NearestStationProvider, private formBuilder: FormBuilder, public navCtrl: NavController) {
       this.addressForm = this.formBuilder.group({
      addressInputText: ['', Validators.required]
    });
+
   }
 
   sendAddress() {
       var address = this.addressForm.value.addressInputText;
       var correct_address = address.split(" ").join("%20");
       var url =  "https://api-garelaplusproche.herokuapp.com/nearest-station?address=" + correct_address
-      console.log(url);
-      this.nearestStationProvider.getNearestStation(url);
+      console.log("Steph: " + url);
+      this.nearestStationProvider.getNearestStation(url)
+      .then(station => {
+          this.nstation = station.city;
+      });
   }
 }
