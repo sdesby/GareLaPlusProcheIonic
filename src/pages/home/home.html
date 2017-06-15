@@ -11,11 +11,9 @@
     <form [formGroup]="addressForm" (ngSubmit)="sendAddress()">
       <ion-item>
         <ion-label floating>Entrez une adresse</ion-label>
-        <ion-input type="text" formControlName="addressInputText"></ion-input>
+        <ion-input type="text" formControlName="addressInputText" clearInput=true></ion-input>
       </ion-item>
-      <button ion-button type="submit" [disabled]="!addressForm.valid">Rechercher</button>
+      <button ion-button full type="submit" item-right [disabled]="!addressForm.valid">Rechercher</button>
     </form>
-    <p>
-        Resultat: {{station}}
-    </p>
+    <div [innerHTML] = "'<p>' + resultHTML + '</p>'"></div>
 </ion-content>

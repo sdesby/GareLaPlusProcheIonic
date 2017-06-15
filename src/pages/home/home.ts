@@ -3,20 +3,33 @@ import { NavController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {NearestStationProvider} from "../../providers/nearest-station/nearest-station";
 
+/*interface Station {
+    department: String,
+    longitude: number,
+    latitude: number,
+    city: String,
+    postalCode: number,
+    region: String,
+    name: String,
+    howbig: String
+}*/
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [NearestStationProvider]
 })
+
 export class HomePage {
     private addressForm: FormGroup;
     private station: any;
+    private resultHTML: String;
 
   constructor(public nearestStationProvider: NearestStationProvider, private formBuilder: FormBuilder, public navCtrl: NavController) {
       this.addressForm = this.formBuilder.group({
      addressInputText: ['', Validators.required]
    });
-
+      this.resultHTML="";
   }
 
   sendAddress() {
@@ -26,7 +39,14 @@ export class HomePage {
       console.log("Steph: " + url);
       this.nearestStationProvider.getNearestStation(url)
       .then(station => {
-          this.station = station.city;
+          console.log(station);
+          this.station = station;
+          this.resultHTML = "Résultat: <br/>" +
+          "Nom: " + this.station.name + "<br/>" +
+          "Ville: " + this.station.city + "<br/>" +
+          "Code postal: " + this.station.postalCode + " <br/>" +
+          "Département: " + this.station.department + "<br/>" +
+          "Région: " + this.station.region;
       });
   }
 }
