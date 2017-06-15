@@ -10,8 +10,7 @@ import {NearestStationProvider} from "../../providers/nearest-station/nearest-st
 })
 export class HomePage {
     private addressForm: FormGroup;
-    private nstation: any;
-    private result: any;
+    private station: any;
 
   constructor(public nearestStationProvider: NearestStationProvider, private formBuilder: FormBuilder, public navCtrl: NavController) {
       this.addressForm = this.formBuilder.group({
@@ -27,7 +26,7 @@ export class HomePage {
       console.log("Steph: " + url);
       this.nearestStationProvider.getNearestStation(url)
       .then(station => {
-          this.nstation = station.city;
+          this.station = station.city;
       });
   }
 }
