@@ -34,6 +34,10 @@ export class HomePage {
       this.resultHTML="";
   }
 
+ionViewDidLeave() {
+    this.addressForm.reset();
+}
+
   sendAddress() {
       var address = this.addressForm.value.addressInputText;
       var correct_address = address.split(" ").join("%20");
