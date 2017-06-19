@@ -7,13 +7,15 @@
 </ion-header>
 
 <ion-content padding>
-    <p>Trouvez la gare la plus proche</p>
+    <p>Trouvez la gare la plus proche de :</p>
     <form [formGroup]="addressForm" (ngSubmit)="sendAddress()">
       <ion-item>
         <ion-label floating>Entrez une adresse</ion-label>
         <ion-input type="text" formControlName="addressInputText" clearInput=true></ion-input>
       </ion-item>
-      <button ion-button full type="submit" item-right [disabled]="!addressForm.valid">Rechercher</button>
+      <button ion-button type="submit" icon-left full [disabled]="!addressForm.valid">
+          <ion-icon name="search"> Rechercher</ion-icon>
+      </button>
     </form>
-    <div [innerHTML] = "'<p>' + resultHTML + '</p>'"></div>
+    <div class="result-div" [innerHTML] = "'<p>' + resultHTML + '</p>'"></div>
 </ion-content>
