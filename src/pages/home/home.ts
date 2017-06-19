@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {NearestStationProvider} from "../../providers/nearest-station/nearest-station";
+import {ResultPage} from "../result/result";
 
 /*interface Station {
     department: String,
@@ -24,6 +25,7 @@ export class HomePage {
     private addressForm: FormGroup;
     private station: any;
     private resultHTML: String;
+    private resultPage = ResultPage;
 
   constructor(public nearestStationProvider: NearestStationProvider, private formBuilder: FormBuilder, public navCtrl: NavController) {
       this.addressForm = this.formBuilder.group({
@@ -41,12 +43,13 @@ export class HomePage {
       .then(station => {
           console.log(station);
           this.station = station;
-          this.resultHTML = "Résultat: <br/>" +
+          this.navCtrl.push(this.resultPage, station);
+         /* this.resultHTML = "Résultat: <br/>" +
           "Nom: " + this.station.name + "<br/>" +
           "Ville: " + this.station.city + "<br/>" +
           "Code postal: " + this.station.postalCode + " <br/>" +
           "Département: " + this.station.department + "<br/>" +
-          "Région: " + this.station.region;
+          "Région: " + this.station.region;*/
       });
   }
 }
