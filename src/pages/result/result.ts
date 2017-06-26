@@ -13,20 +13,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'result.html',
 })
 export class ResultPage {
+    private stations: any;
     private name: String;
     private city: String;
     private department: String;
-    private region: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.name = navParams.get('properties.libelle_gare');
-      this.city = navParams.get('properties.commune');
-      this.department = navParams.get('properties.departement');
-      this.region = navParams.get('properties.region');
+      this.stations = navParams.get('stations');
+      console.log("Results: stations = " + this.stations[0].properties.commune);
+      this.name = this.stations[0].properties.libelle_gare;
+      this.city = this.stations[0].properties.commune;
+      this.department = this.stations[0].properties.departement;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
+  }
+
+  ionViewDidLeave() {
+      this.stations.reset();
+      this.navCtrl.pop();
   }
 
 }

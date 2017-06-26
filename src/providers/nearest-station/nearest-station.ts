@@ -25,8 +25,7 @@ export class NearestStationProvider {
                 .map(res => res.json())
                 .subscribe(data => {
                     this.station = data;
-                    console.log("tada!");
-                    console.log(data.properties.libelle_gare);
+                    console.log("NearestStationProvider: data fetched");
                     resolve(this.station);
                 });
         });

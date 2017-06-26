@@ -47,13 +47,7 @@ ionViewDidLeave() {
       .then(station => {
           console.log(station);
           this.station = station;
-          this.navCtrl.push(this.resultPage, station);
-         /* this.resultHTML = "Résultat: <br/>" +
-          "Nom: " + this.station.name + "<br/>" +
-          "Ville: " + this.station.city + "<br/>" +
-          "Code postal: " + this.station.postalCode + " <br/>" +
-          "Département: " + this.station.department + "<br/>" +
-          "Région: " + this.station.region;*/
+          this.navCtrl.push(this.resultPage, {stations : this.station});
       });
   }
 }
