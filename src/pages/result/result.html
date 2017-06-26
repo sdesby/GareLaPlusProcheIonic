@@ -12,14 +12,14 @@
 
 
 <ion-content padding>
-<ion-card>
+<ion-card *ngFor="let station of stations">
     <img src="img/red-train.jpg"/>
     <ion-card-header>
-        Gare de {{name}}
+        Gare de {{station.properties.libelle_gare}}
     </ion-card-header>
     <ion-card-content>
-        Ville : {{city}} <br/>
-        Département : {{department}} <br/>
+        Commune : {{station.properties.commune}} <br/>
+        Département : {{station.properties.departement}} <br/>
     </ion-card-content>
 </ion-card>
 </ion-content>
