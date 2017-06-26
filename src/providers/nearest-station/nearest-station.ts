@@ -26,7 +26,7 @@ export class NearestStationProvider {
                 .subscribe(data => {
                     this.station = data;
                     console.log("tada!");
-                    console.log(data.city);
+                    console.log(data.properties.libelle_gare);
                     resolve(this.station);
                 });
         });

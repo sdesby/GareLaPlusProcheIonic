@@ -19,10 +19,10 @@ export class ResultPage {
     private region: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.name = navParams.get('name');
-      this.city = navParams.get('city');
-      this.department = navParams.get('department');
-      this.region = navParams.get('region');
+      this.name = navParams.get('properties.libelle_gare');
+      this.city = navParams.get('properties.commune');
+      this.department = navParams.get('properties.departement');
+      this.region = navParams.get('properties.region');
   }
 
   ionViewDidLoad() {
