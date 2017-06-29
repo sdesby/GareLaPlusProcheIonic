@@ -29,7 +29,8 @@ export class HomePage {
 
   constructor(public nearestStationProvider: NearestStationProvider, private formBuilder: FormBuilder, public navCtrl: NavController) {
       this.addressForm = this.formBuilder.group({
-     addressInputText: ['', Validators.required]
+     addressInputText: ['', Validators.required],
+     maxdistance: []
    });
       this.resultHTML="";
   }
@@ -40,8 +41,9 @@ ionViewDidLeave() {
 
   sendAddress() {
       var address = this.addressForm.value.addressInputText;
+      var maxdistance = this.addressForm.value.maxdistance;
       var correct_address = address.split(" ").join("%20");
-      var url =  "https://api-garelaplusproche.herokuapp.com/nearest-station?address=" + correct_address
+      var url =  "https://api-garelaplusproche.herokuapp.com/nearest-station?address=" + correct_address + "&maxdistance=" + maxdistance;
       console.log("Steph: " + url);
       this.nearestStationProvider.getNearestStation(url)
       .then(station => {
