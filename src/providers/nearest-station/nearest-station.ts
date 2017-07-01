@@ -11,15 +11,15 @@ export class NearestStationProvider {
 
     constructor(public _http: Http) {
         this.http = _http;
-        console.log('Hello NearestStationProvider Provider');
     }
 
     getNearestStation(url) {
         if (this.previousUrl === url && this.station) {
             return Promise.resolve(this.station);
         }
+
         // Dont have the data yet
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.previousUrl = url;
             this.http.get(url)
                 .map(res => res.json())
@@ -27,7 +27,11 @@ export class NearestStationProvider {
                     this.station = data;
                     console.log("NearestStationProvider: data fetched");
                     resolve(this.station);
-                });
-        });
+                },
+                err => {
+                    reject(err);
+                }
+            );
+        })
     }
 }

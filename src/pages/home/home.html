@@ -7,30 +7,33 @@
 </ion-header>
 
 <ion-content padding>
-    <p>Trouvez la gare la plus proche de :</p>
-    <form [formGroup]="addressForm" (ngSubmit)="sendAddress()">
-      <ion-item>
-        <ion-label floating>Entrez une adresse</ion-label>
-        <ion-input type="text" formControlName="addressInputText" clearInput=true></ion-input>
-      </ion-item>
-      <ion-item>
-  <ion-label floating>Dans un rayon de (kilomètres):</ion-label>
-  <ion-select formControlName="maxdistance">
-    <ion-option value="10">10</ion-option>
-    <ion-option value="20">20</ion-option>
-    <ion-option value="30">30</ion-option>
-    <ion-option value="40">40</ion-option>
-    <ion-option value="50">50</ion-option>
-    <ion-option value="60">60</ion-option>
-    <ion-option value="70">70</ion-option>
-    <ion-option value="80">80</ion-option>
-    <ion-option value="90">90</ion-option>
-    <ion-option value="100">100</ion-option>
-  </ion-select>
-</ion-item>
-      <button ion-button type="submit" icon-left full [disabled]="!addressForm.valid">
+  <p>Trouvez la gare la plus proche de :</p>
+  <form [formGroup]="addressForm" (ngSubmit)="sendAddress()">
+    <ion-item>
+      <ion-label floating>Entrez une adresse</ion-label>
+      <ion-input type="text" formControlName="addressInputText" clearInput=true></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Dans un rayon de (kilomètres):</ion-label>
+      <ion-select formControlName="maxdistance">
+        <ion-option value="10">10</ion-option>
+        <ion-option value="20">20</ion-option>
+        <ion-option value="30">30</ion-option>
+        <ion-option value="40">40</ion-option>
+        <ion-option value="50">50</ion-option>
+        <ion-option value="60">60</ion-option>
+        <ion-option value="70">70</ion-option>
+        <ion-option value="80">80</ion-option>
+        <ion-option value="90">90</ion-option>
+        <ion-option value="100">100</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" icon-left full [disabled]="!addressForm.valid">
           <ion-icon name="search"> Rechercher</ion-icon>
       </button>
-    </form>
-    <!--div class="result-div" [innerHTML] = "'<p>' + resultHTML + '</p>'"></div-->
+  </form>
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  <!--div class="result-div" [innerHTML] = "'<p>' + resultHTML + '</p>'"></div-->
 </ion-content>

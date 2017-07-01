@@ -31,7 +31,7 @@ export class ResultPage {
   }
 
   ionViewDidLeave() {
-      this.stations.reset();
+      this.stations = [];
       this.navCtrl.pop();
   }
 
