@@ -12,7 +12,13 @@
 
 
 <ion-content padding>
-<ion-card *ngFor="let station of stations">
+  <h3>Vos résultats</h3>
+  <ion-list>
+    <a ion-item *ngFor="let station of stations" (click)="openDetails(station)">
+      {{station.properties.libelle_gare}}
+  </a>
+  </ion-list>
+  <!--ion-card *ngFor="let station of stations">
     <img src="img/red-train.jpg"/>
     <ion-card-header>
         Gare de {{station.properties.libelle_gare}}
@@ -21,5 +27,5 @@
         Commune : {{station.properties.commune}} <br/>
         Département : {{station.properties.departement}} <br/>
     </ion-card-content>
-</ion-card>
+</ion-card-->
 </ion-content>

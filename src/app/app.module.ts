@@ -8,13 +8,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {ResultPage} from '../pages/result/result';
+import {StationDetailsContentPage} from "../pages/result/result";
 import { NearestStationProvider } from '../providers/nearest-station/nearest-station';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ResultPage
+    ResultPage,
+    StationDetailsContentPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { NearestStationProvider } from '../providers/nearest-station/nearest-sta
   entryComponents: [
     MyApp,
     HomePage,
-    ResultPage
+    ResultPage,
+    StationDetailsContentPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the ResultPage page.
@@ -18,7 +18,7 @@ export class ResultPage {
     private city: String;
     private department: String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
       this.stations = navParams.get('stations');
       console.log("Results: stations = " + this.stations[0].properties.commune);
       this.name = this.stations[0].properties.libelle_gare;
@@ -35,4 +35,25 @@ export class ResultPage {
       this.navCtrl.pop();
   }
 
+  openDetails(station) {
+      console.log("Details of : " + station.properties.libelle_gare);
+      let modal = this.modalCtrl.create(StationDetailsContentPage, {station: station});
+      modal.present();
+  }
+}
+
+@Component({templateUrl: './station-details.html'})
+export class StationDetailsContentPage {
+    station: any;
+
+    constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+        console.log("I'm in details page constructor");
+        this.station = this.navParams.get('station');
+        console.log("This is station: ");
+        console.log(this.station);
+    }
+
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 }
